@@ -1,53 +1,77 @@
+
 <!DOCTYPE html>
 <html lang="th">
 <head>
 <meta charset="UTF-8">
-<title>รัศมี</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>รัศมี SPAM</title>
 
 <style>
-body {
+* {
   margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   background: black;
+  height: 100vh;
   overflow: hidden;
+  font-family: sans-serif;
 }
 
-/* ตัวหนังสือ */
-h1 {
-  font-size: 100px;
-  font-weight: bold;
-  animation: colorChange 1s infinite, shake 0.2s infinite;
+.spam {
+  position: absolute;
+  font-weight: 900;
+  white-space: nowrap;
+  animation:
+    rainbow 0.4s infinite,
+    shake 0.15s infinite alternate;
+  text-shadow: 0 0 15px currentColor;
+  user-select: none;
 }
 
-/* สีรุ้ง */
-@keyframes colorChange {
+@keyframes rainbow {
   0% { color: red; }
-  25% { color: yellow; }
-  50% { color: lime; }
-  75% { color: cyan; }
-  100% { color: magenta; }
+  20% { color: yellow; }
+  40% { color: lime; }
+  60% { color: cyan; }
+  80% { color: magenta; }
+  100% { color: red; }
 }
 
-/* สั่น ๆ */
 @keyframes shake {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(5px, -5px); }
-  50% { transform: translate(-5px, 5px); }
-  75% { transform: translate(5px, 5px); }
-  100% { transform: translate(-5px, -5px); }
+  0% { transform: translate(5px, -5px) rotate(-5deg); }
+  100% { transform: translate(-5px, 5px) rotate(5deg); }
 }
+
 </style>
 </head>
 
 <body>
-<h1>รัศมี</h1>
 
-<!-- เสียง -->
+<script>
+const word = "รัศมี";
+const total = 250;
+
+for (let i = 0; i < total; i++) {
+  const text = document.createElement("div");
+
+  text.className = "spam";
+  text.innerText = word;
+
+  text.style.left = Math.random() * 100 + "vw";
+  text.style.top = Math.random() * 100 + "vh";
+  text.style.fontSize = (20 + Math.random() * 100) + "px";
+  text.style.animationDelay = Math.random() + "s";
+
+  document.body.appendChild(text);
+}
+</script>
+
 <audio autoplay loop>
-  <source src="https://www.soundjay.com/button/beep-07.wav" type="audio/wav">
+  <source src="https://www.soundjay.com/button/beep-07.wav"
+  type="audio/wav">
 </audio>
 
 </body>
